@@ -1,0 +1,2 @@
+colors: {source: "#4d4d4d", standard: "#d95f02", adversarial: "#1b9e77"}
+formats: [png, pdf]

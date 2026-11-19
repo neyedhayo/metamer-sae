@@ -1,0 +1,16 @@
+# Training hyper-parameters of the selected pilot configuration (Notebook 06); see SAECfg.
+framework: overcomplete
+version: "0.3.0"
+variant: topk
+input_dim: 384
+dictionary_width: 1536   # 4x
+top_k: 64
+lr: 0.0005
+batch_size: 256
+max_epochs: 200
+grad_clip: 1.0
+early_stop_patience: 12
+min_delta: 1.0e-5
+lr_patience: 4
+lr_factor: 0.5
+min_lr: 1.0e-5

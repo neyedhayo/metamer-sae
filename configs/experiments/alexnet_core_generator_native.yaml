@@ -1,0 +1,20 @@
+# Phase B / Track B: AlexNet standard vs adversarial (L2, eps=3) vs random-perturbation control, generator-native.
+# Registry entries must be audited first (`metamer-sae resolve-registry`); unresolved conditions are reported as gaps.
+experiment_id: alexnet_core_generator_native
+track: generator_native
+description: AlexNet training-condition comparison inside each generator's own activation space
+feather_commit: d9629b58ad43ce9a6bd74be951869cffbd8e8161
+conditions:
+  - {condition_id: alexnet_standard,            stages: {mode: all_eligible}}
+  - {condition_id: alexnet_l2_3_robust,         stages: {mode: all_eligible}}
+  - {condition_id: alexnet_random_perturbation, stages: {mode: all_eligible}}
+split: {policy: source_level, n_development: 8, n_primary: 32, n_reserve: 8, seed: 20261120}
+families:
+  - name: alexnet_adversarial_vs_standard
+    confirmatory: false          # set true only after the family is frozen before confirmatory runs
+    metrics: [relative_l2_source_norm, cosine_similarity, delta_reconstruction_error]
+    contrasts: [[alexnet_standard, alexnet_l2_3_robust]]
+  - name: alexnet_random_control_vs_standard
+    confirmatory: false
+    metrics: [relative_l2_source_norm, cosine_similarity]
+    contrasts: [[alexnet_standard, alexnet_random_perturbation]]

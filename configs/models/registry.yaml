@@ -1,0 +1,40 @@
+# Model-family / training-condition matrix (README scope §3). Only the pilot pair is verified.
+# Everything else is audit_required: run `metamer-sae resolve-registry` against the pinned Feather commit, inspect
+# the candidates, then pin `model_key`/`experiment_key` and set verified: true. Never guess identifiers.
+version: "2026-11-20"
+families:
+  - {family: resnet50, architecture: resnet50}
+  - {family: alexnet, architecture: alexnet, notes: "Proposal: Feather Experiment 4 stages relu0-relu4, fc0, fc1, final (verify)."}
+  - {family: ipcl_alexnetgn, architecture: alexnet_groupnorm, notes: "IPCL = self-supervised objective; NOT adversarial robustness."}
+conditions:
+  # ---- ResNet-50 (pilot pair, validated in notebooks 01-09) ----
+  - {condition_id: resnet50_standard, family: resnet50, training_objective: supervised_standard,
+     experiment_key: experiment_1, model_key: resnet50, availability: pilot_validated, verified: true, pilot: true}
+  - {condition_id: resnet50_l2_3_robust, family: resnet50, training_objective: adversarial, perturbation_norm: L2,
+     perturbation_epsilon: 3.0, experiment_key: experiment_3, model_key: resnet50_l2_3_robust,
+     availability: pilot_validated, verified: true, pilot: true}
+  - {condition_id: resnet50_random_perturbation, family: resnet50, training_objective: random_perturbation,
+     model_key_patterns: ["^resnet50.*random"], availability: audit_required,
+     notes: "Only if an official matching Feather condition exists."}
+  # ---- AlexNet (core expansion) ----
+  - {condition_id: alexnet_standard, family: alexnet, training_objective: supervised_standard,
+     model_key_patterns: ["^alexnet$"], availability: expected_from_proposal}
+  - {condition_id: alexnet_l2_3_robust, family: alexnet, training_objective: adversarial, perturbation_norm: L2,
+     perturbation_epsilon: 3.0, model_key_patterns: ["^alexnet.*(l2_3|robust)"], exclude_patterns: ["random", "ipcl"],
+     availability: expected_from_proposal}
+  - {condition_id: alexnet_random_perturbation, family: alexnet, training_objective: random_perturbation,
+     model_key_patterns: ["^alexnet.*random"], exclude_patterns: ["ipcl"], availability: expected_from_proposal,
+     notes: "Control; never pooled with standard or adversarial."}
+  # ---- IPCL / AlexNetGN (core expansion) ----
+  - {condition_id: ipcl_selfsup, family: ipcl_alexnetgn, training_objective: self_supervised_ipcl,
+     model_key_patterns: ["ipcl"], exclude_patterns: ["supervised_matched", "robust", "adv"],
+     matched_comparator: ipcl_supervised_matched, readout: linear_readout, availability: audit_required}
+  - {condition_id: ipcl_supervised_matched, family: ipcl_alexnetgn, training_objective: supervised_matched_ipcl_arch,
+     model_key_patterns: ["alexnet.*(gn|groupnorm)", "supervised.*ipcl"], exclude_patterns: ["ipcl_selfsup"],
+     matched_comparator: ipcl_selfsup, availability: audit_required,
+     notes: "Confirm matched architecture + augmentations from Feather code before use."}
+  # ---- Phase D: adversarial IPCL (feasibility only) ----
+  - {condition_id: ipcl_adversarial, family: ipcl_alexnetgn, training_objective: adversarial_ipcl,
+     model_key_patterns: ["ipcl.*(robust|adv)", "(robust|adv).*ipcl"], readout: linear_readout,
+     availability: audit_required,
+     notes: "Do not fabricate. If absent see docs/protocols/ADVERSARIAL_IPCL_EXTENSION.md."}

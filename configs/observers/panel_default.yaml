@@ -1,0 +1,15 @@
+# Common-observer panel (Track A). Each entry has its own preprocessing/stage map. kind=torchvision entries use
+# ImageNet weights as observers (roles: observer / recognition baseline); they are never the generator.
+# Feather-checkpoint observers (kind: feather) are added only after `resolve-registry` verifies the checkpoints.
+panel:
+  - {observer_id: convnext_tiny_stage3, kind: torchvision, architecture: convnext_tiny, weights: IMAGENET1K_V1, stage: stage3, pilot: true}
+  - {observer_id: alexnet_relu2,        kind: torchvision, architecture: alexnet,       weights: IMAGENET1K_V1, stage: relu2}
+  - {observer_id: resnet50_layer2,      kind: torchvision, architecture: resnet50,      weights: IMAGENET1K_V2, stage: layer2}
+# Template for a Feather-checkpoint observer / generator-native adapter (fill ONLY after auditing the pinned repo):
+# - observer_id: ipcl_selfsup_<stage>
+#   kind: feather
+#   model_id: <exact Feather model key>
+#   family: ipcl_alexnetgn
+#   build_script: model_analysis_folders/<model_key>/build_network.py   # verify
+#   stage_to_module: {<feather_stage>: <module.path>}                  # verify against named_modules()
+#   preprocessing: {resize: <..>, crop: <..>, mean: [..], std: [..], source: "<Feather file:line>"}

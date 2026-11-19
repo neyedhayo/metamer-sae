@@ -1,0 +1,13 @@
+# Phase C / Track B: self-supervised IPCL vs architecture-matched supervised AlexNetGN. NOT an adversarial contrast.
+experiment_id: ipcl_core_generator_native
+track: generator_native
+description: IPCL (self-supervised) vs matched supervised AlexNetGN in each model's own activation space
+feather_commit: d9629b58ad43ce9a6bd74be951869cffbd8e8161
+conditions:
+  - {condition_id: ipcl_selfsup,           stages: {mode: all_eligible}}
+  - {condition_id: ipcl_supervised_matched, stages: {mode: all_eligible}}
+families:
+  - name: ipcl_vs_matched_supervised
+    confirmatory: false
+    metrics: [relative_l2_source_norm, cosine_similarity]
+    contrasts: [[ipcl_supervised_matched, ipcl_selfsup]]

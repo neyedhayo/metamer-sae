@@ -1,0 +1,9 @@
+architecture: convnext_tiny
+weights: IMAGENET1K_V1
+layer: stage3
+frozen: true
+input_resolution: 224
+resize_size: 236
+output_channels: 384
+spatial_shape: [384, 14, 14]
+pooling: global_average_pool

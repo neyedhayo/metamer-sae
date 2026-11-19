@@ -1,0 +1,7 @@
+fit_split: imagenette_train
+fitted_components: 384
+primary_components: 16
+sensitivity_components: [64]
+centering: mean
+whiten: false
+channel_standardize: false

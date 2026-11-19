@@ -1,0 +1,10 @@
+__pycache__/
+*.egg-info/
+.venv/
+outputs/*
+!outputs/*/.gitkeep
+data/images/
+data/external/
+*.pt
+*.npy
+*.joblib

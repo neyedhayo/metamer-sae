@@ -1,0 +1,16 @@
+# Phase E / Track A: every core generator condition through ONE frozen dictionary per observer x stage.
+experiment_id: common_observer_core
+track: common_observer
+description: Core model matrix scored in a shared natural-image-trained observer space (panel in configs/observers)
+observer_ids: [convnext_tiny_stage3, alexnet_relu2, resnet50_layer2]
+feather_commit: d9629b58ad43ce9a6bd74be951869cffbd8e8161
+conditions:
+  - {condition_id: resnet50_standard,       stages: {mode: declared_subset, stages: [layer2_fake_relu], justification: "pilot parity stage; extend after parity passes"}}
+  - {condition_id: resnet50_l2_3_robust,    stages: {mode: declared_subset, stages: [layer2_fake_relu], justification: "pilot parity stage; extend after parity passes"}}
+  - {condition_id: alexnet_standard,        stages: {mode: all_eligible}}
+  - {condition_id: alexnet_l2_3_robust,     stages: {mode: all_eligible}}
+  - {condition_id: ipcl_selfsup,            stages: {mode: all_eligible}}
+  - {condition_id: ipcl_supervised_matched, stages: {mode: all_eligible}}
+families:
+  - {name: resnet50_adv_vs_std, confirmatory: false, metrics: [relative_l2_source_norm, cosine_similarity], contrasts: [[resnet50_standard, resnet50_l2_3_robust]]}
+  - {name: alexnet_adv_vs_std,  confirmatory: false, metrics: [relative_l2_source_norm, cosine_similarity], contrasts: [[alexnet_standard, alexnet_l2_3_robust]]}

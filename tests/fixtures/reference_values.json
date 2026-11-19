@@ -1,0 +1,12 @@
+{
+  "pca_val_mse": {"16": 0.00374890, "64": 0.00208057},
+  "sae_val_mse": {"seed123": 0.0016301164756807836, "seed42": 0.00163357109},
+  "primary_l2_means": {
+    "raw_384": {"standard": 3.51393, "adversarial": 1.88862},
+    "pca_16": {"standard": 3.32090, "adversarial": 1.73932},
+    "pca_64": {"standard": 3.37833, "adversarial": 1.78385},
+    "sae_seed123": {"standard": 2.65585, "adversarial": 1.49767}
+  },
+  "tol": {"pca_mse": 2e-8, "sae_mse": 1e-7, "l2_mean": 2e-5},
+  "source": "BUILD_GUIDE sections 7.2, 9.6, 11.3. Tolerances are explicit; change only with justification."
+}

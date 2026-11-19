@@ -1,0 +1,3 @@
+dataset: imagenette2-320
+train_samples: 9469
+validation_samples: 3925

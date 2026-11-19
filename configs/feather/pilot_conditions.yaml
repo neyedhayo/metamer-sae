@@ -1,0 +1,4 @@
+commit: d9629b58ad43ce9a6bd74be951869cffbd8e8161
+conditions:
+  - {id: standard_resnet50,    role: standard,    experiment_key: experiment_1, model_key: resnet50,             layer: layer2_fake_relu}
+  - {id: adversarial_resnet50, role: adversarial, experiment_key: experiment_3, model_key: resnet50_l2_3_robust, layer: layer2_fake_relu}
