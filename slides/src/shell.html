@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>%%TITLE%% · Samuel Oyeneye</title>
+<meta name="description" content="An offline HTML presentation about model metamers and sparse feature decomposition.">
+<style>
+%%CSS%%
+</style>
+</head>
+<body>
+<!-- Each slide is a section with a stable ID and optional speaker-notes template.
+     Add or reorder sections to extend the deck. Navigation and print order follow the markup. The primary result slide contains a CSV of the main plots.
+     Images refer to named entries in the embedded photo-data JSON below. -->
+<main id="stage" aria-label="%%TITLE%% Presentation">
+%%SLIDES%%
+</main>
+<nav id="controls" aria-label="Presentation controls">
+  <button type="button" data-action="prev" aria-label="Previous slide" title="Previous (←)">←</button>
+  <button type="button" data-action="overview" aria-label="Slide overview" title="Slide overview (O)">☷ <span class="desktop">Slides</span></button>
+  <button type="button" data-action="notes" aria-label="Speaker notes" title="Speaker notes (N)">≡ <span class="desktop">Notes</span></button>
+  <button type="button" data-action="fullscreen" aria-label="Fullscreen" title="Fullscreen (F)">⛶</button>
+  <output id="count" aria-live="polite"></output>
+  <button type="button" data-action="next" aria-label="Next slide" title="Next (→)">→</button>
+</nav>
+<div id="progress" aria-hidden="true"><i></i></div>
+<dialog id="overview" aria-labelledby="overview-title">
+  <header><h2 id="overview-title">Slides</h2><form method="dialog"><button>Close</button></form></header>
+  <div id="overview-list"></div>
+  <p id="shortcut-help">← / → Navigate &nbsp;·&nbsp; O Overview &nbsp;·&nbsp; N Notes &nbsp;·&nbsp; F Fullscreen</p>
+</dialog>
+<dialog id="notes" aria-labelledby="note-title">
+  <header><h2 id="note-title"></h2><form method="dialog"><button>Close</button></form></header>
+  <div id="note-body"></div>
+</dialog>
+<script type="application/json" id="photo-data">
+%%PHOTOS%%
+</script>
+<script>
+%%JS%%
+</script>
+</body>
+</html>

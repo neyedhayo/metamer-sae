@@ -1,0 +1,346 @@
+<!--
+Edit a slide in its <section> below. Reorder sections to change the talk order.
+Keep each slide ID unique. The ID also works as its URL fragment.
+Double-braced placeholders insert data-driven charts or controls at build time.
+Speaker notes live inside the template at the end of each slide.
+-->
+
+<section class="slide cover" id="title" {{TITLE_ATTRIBUTE}}>
+  
+  <div class="content">
+    <div><div class="eyebrow">Visual Perception · Project 08</div><h1>{{COVER_TITLE}}</h1><p class="subtitle">A feature-level look at model metamers</p><p class="author">Samuel Oyeneye</p></div>
+    <div class="hero-pair"><span class="pair-caption">Matched at the final layer</span><figure class="photo source"><img data-photo="0000-source" alt="Natural source image for Feather source 0000"><figcaption><i class="dot"></i>Natural source</figcaption></figure>
+    <figure class="photo standard"><img data-photo="0000-standard-final" alt="Standard metamer for Feather source 0000 at final"><figcaption><i class="dot"></i>Model metamer</figcaption></figure></div>
+  </div>
+  <footer class="slide-foot"><span>Feather stimulus 0000 · Standard ResNet-50 · Final layer</span><div><a href="https://doi.org/10.1038/s41593-023-01442-0" target="_blank" rel="noopener">Feather et al. 2023</a></div></footer>
+  <template class="speaker-notes"><p>A model metamer is synthesized to evoke nearly the same activation as a source image at one layer of a fixed generator. Show the photo and its published final-layer metamer before defining the term.</p>
+    <p>This late-layer example introduces the phenomenon. The completed pilot used the same model family at <code>layer2_fake_relu</code>.</p></template>
+</section>
+
+<section class="slide " id="questions" data-title="What does a layer preserve?" hidden>
+  <header class="slide-head"><p>Research questions</p><h2>What does a layer preserve?</h2></header>
+  <div class="content">
+    <div class="question-wrap"><figure class="photo source"><img data-photo="0000-source" alt="Natural source image for Feather source 0000"><figcaption><i class="dot"></i>Shared visual input</figcaption></figure><div class="question-branches"><div class="question"><span class="tag">Pilot · Model representations</span><h3>Which visual features survive metamer generation?</h3><p class="sub">Standard vs adversarial training</p></div>
+    <div class="question future"><span class="tag">Future · Brain representations</span><h3>Do model layers and visual brain regions organize images similarly?</h3></div></div></div>
+  </div>
+  <footer class="slide-foot"><span>Project 08 research proposal</span><div><a href="https://doi.org/10.3389/neuro.06.004.2008" target="_blank" rel="noopener">Representational similarity analysis</a></div></footer>
+  <template class="speaker-notes"><p>The pilot examines which feature responses are preserved in a common observer network. The longer-term question maps similarities between stimuli across model layers and fMRI regions.</p>
+    <p>The proposal motivates both questions. The results in this talk are from the completed model-only pilot.</p></template>
+</section>
+
+<section class="slide " id="invariance" data-title="A layer match can hide visual differences" hidden>
+  <header class="slide-head"><p>Motivation</p><h2>A layer match can hide visual differences</h2></header>
+  <div class="content">
+    <div class="stage-gallery"><div></div>
+    <div></div>
+    <div class="head">Layer 2</div>
+    <div class="head">Final layer</div>
+    <div class="reference"><figure class="photo source"><img data-photo="0000-source" alt="Natural source image for Feather source 0000"><figcaption><i class="dot"></i>Natural source</figcaption></figure></div>
+    <div class="lab standard">Standard</div><figure class="photo standard"><img data-photo="0000-standard" alt="Standard metamer for Feather source 0000"></figure>
+    <figure class="photo standard"><img data-photo="0000-standard-final" alt="Standard metamer for Feather source 0000 at final"></figure><div class="lab adversarial">Adversarial</div><figure class="photo adversarial"><img data-photo="0000-adversarial" alt="Adversarial metamer for Feather source 0000"></figure>
+    <figure class="photo adversarial"><img data-photo="0000-adversarial-final" alt="Adversarial metamer for Feather source 0000 at final"></figure></div>
+  </div>
+  <footer class="slide-foot"><span>Feather stimulus 0000 · Published examples at two ResNet-50 stages</span><div><a href="https://doi.org/10.1038/s41593-023-01442-0" target="_blank" rel="noopener">Feather et al. 2023</a></div></footer>
+  <template class="speaker-notes"><p>Feather et al. showed that human recognizability can decrease with generator depth and that adversarial training often improves it. The gallery illustrates appearance for one source. Recognition measurements in Feather are aggregated over their behavioral task.</p>
+    <p>The gap for this project is the representational detail: which components or sparse features are preserved or displaced under a training contrast?</p></template>
+</section>
+
+<section class="slide " id="generation" data-title="Match a layer by changing pixels" hidden>
+  <header class="slide-head"><p>Metamer generation</p><h2>Match a layer by changing pixels</h2></header>
+  <div class="content">
+    {{GENERATION_DEMO}}
+  </div>
+  <footer class="slide-foot"><span>Local 180-step replay · Real ResNet-50 maps · Four fixed channels shown per stage</span><div><a href="https://doi.org/10.1038/s41593-023-01442-0" target="_blank" rel="noopener">Feather et al. · Fig. 1</a> · <a href="https://github.com/jenellefeather/model_metamers_pytorch" target="_blank" rel="noopener">Generator code</a></div></footer>
+  <template class="speaker-notes"><p>Press Replay or scrub the recorded checkpoints. Each column shows four corresponding convolution channels for the fixed source and changing candidate, with a fixed scale per channel.</p>
+    <p>This teaching run uses the published standard ResNet-50 weights and minimizes normalized error at layer2_fake_relu. It starts from Gaussian white noise and uses Adam on the candidate pixels. The original Feather stimuli used their published 24,000-step gradient-descent protocol.</p>
+    <p>The line chart spaces early updates farther apart and tracks the active checkpoint. The loss is computed over the full target layer. The small maps illustrate individual channels.</p></template>
+</section>
+
+<section class="slide " id="comparison" data-title="What changes when training changes?" hidden>
+  <header class="slide-head"><p>Pilot comparison</p><h2>What changes when training changes?</h2></header>
+  <div class="content">
+    <div class="triptych large"><figure class="photo source"><img data-photo="0000-source" alt="Natural source image for Feather source 0000"><figcaption><i class="dot"></i>Natural source</figcaption></figure>
+    <figure class="photo standard"><img data-photo="0000-standard" alt="Standard metamer for Feather source 0000"><figcaption><i class="dot"></i>Standard metamer</figcaption></figure>
+    <figure class="photo adversarial"><img data-photo="0000-adversarial" alt="Adversarial metamer for Feather source 0000"><figcaption><i class="dot"></i>Adversarial metamer</figcaption></figure></div>
+  </div>
+  <footer class="slide-foot"><span>ResNet-50 · layer2_fake_relu · ℓ₂ adversarial training with ε = 3</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/02_stimulus_collection_and_pairing.ipynb" target="_blank" rel="noopener">Stimulus manifest</a></div></footer>
+  <template class="speaker-notes"><p>This is development triplet 0000. All three stimuli share source identity. The standard checkpoint is <code>experiment_1/resnet50</code> and the adversarial checkpoint is <code>experiment_3/resnet50_l2_3_robust</code>.</p>
+    <p>At layer 2 all three stimuli can look similar. We use a separate frozen observer to measure source-relative representational change.</p></template>
+</section>
+
+<section class="slide " id="decomposition" data-title="Which features moved?" hidden>
+  <header class="slide-head"><p>Research gap</p><h2>Which features moved?</h2></header>
+  <div class="content">
+    <div class="dual">
+  <div class="clean-grid">
+    <div class="eyebrow">Observer activation</div>
+    <div class="mini-code standard" aria-hidden="true"><i class="" style="--h:48%"></i><i class="" style="--h:52%"></i><i class="" style="--h:38%"></i><i class="" style="--h:44%"></i><i class="" style="--h:33%"></i><i class="" style="--h:43%"></i><i class="" style="--h:97%"></i><i class="" style="--h:38%"></i><i class="" style="--h:31%"></i><i class="" style="--h:24%"></i><i class="" style="--h:83%"></i><i class="" style="--h:42%"></i><i class="" style="--h:52%"></i><i class="" style="--h:18%"></i><i class="" style="--h:70%"></i><i class="" style="--h:31%"></i><i class="" style="--h:92%"></i><i class="" style="--h:16%"></i><i class="" style="--h:50%"></i><i class="" style="--h:33%"></i><i class="" style="--h:25%"></i><i class="" style="--h:48%"></i><i class="" style="--h:72%"></i><i class="" style="--h:70%"></i><i class="" style="--h:32%"></i><i class="" style="--h:47%"></i><i class="" style="--h:60%"></i><i class="" style="--h:44%"></i><i class="" style="--h:77%"></i></div>
+    <div class="label">384 mixed channels</div>
+    <p class="sub">A distance measures how far an image moved.</p>
+  </div>
+  <div class="clean-grid">
+    <div class="eyebrow">Feature decomposition</div>
+    <div class="mini-code slate" aria-hidden="true"><i class="" style="--h:96%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="" style="--h:90%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="" style="--h:92%"></i><i class="off" style="--h:5%"></i><i class="" style="--h:86%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i><i class="" style="--h:90%"></i><i class="off" style="--h:5%"></i><i class="off" style="--h:5%"></i></div>
+    <div class="label">A code over learned directions</div>
+    <p class="sub">Compare which directions activate and how strongly.</p>
+  </div>
+</div>
+  </div>
+  <footer class="slide-foot"><span>Schematic codes · PCA provides the linear baseline.</span><div><a href="https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html" target="_blank" rel="noopener">Anthropic 2024</a> · <a href="https://arxiv.org/abs/2406.04093" target="_blank" rel="noopener">Gao et al. 2024</a></div></footer>
+  <template class="speaker-notes"><p>Feather established that metamers expose differences in invariance. A global distance can identify separation and a feature code can localize that separation to changes in selected directions.</p>
+    <p>Anthropic’s feature case studies motivate showing examples alongside activations. Gao et al. motivate the TopK approach. In this project a latent denotes a direction in visual-observer activation space, with semantic identity left open.</p></template>
+</section>
+
+<section class="slide " id="pipeline" data-title="One observer, two paths" hidden>
+  <header class="slide-head"><p>Pilot pipeline</p><h2>One observer, two paths</h2></header>
+  <div class="content">
+    <figure class="pipeline-map" aria-label="Natural photos and Feather triplets flow through the same frozen observer. Fit on natural photos and apply the frozen transforms to the triplets. Compare both metamers with their own source.">
+      <svg viewBox="0 0 1268 423" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <marker id="fit-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#5549dc"/></marker>
+          <marker id="score-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#087970"/></marker>
+        </defs>
+        <path d="M253 106 C302 106 285 164 348 164 M568 164 C605 164 590 106 641 106" class="pipe-fit-path"/>
+        <path d="M253 324 C306 324 287 256 348 256 M568 256 C601 256 597 325 641 325 M911 324 C944 324 949 259 992 259" class="pipe-score-path"/>
+        <path d="M774 170 V247" class="pipe-frozen-path"/>
+      </svg>
+      
+      <div class="pipe-node pipe-fit-input"><span class="pipe-overline">Fit</span>
+        <b>Natural photos</b><small>Imagenette train and validation</small></div>
+      <div class="pipe-node pipe-test-input"><span class="pipe-overline">Score</span>
+        <div class="pipe-triplet"><img data-photo="0000-source" alt="Natural source image for Feather source 0000"><img data-photo="0000-standard" alt="Standard metamer for Feather source 0000"><img data-photo="0000-adversarial" alt="Adversarial metamer for Feather source 0000"></div>
+        <b>Feather triplets</b><small>Source · standard · adversarial</small></div>
+      <div class="pipe-observer">
+        <span class="pipe-overline">Shared observer</span>
+        <div class="pipe-volume"><img data-photo="observer-source-pooled" alt="Pooled ConvNeXt-Tiny activation channels" ></div>
+        <b>ConvNeXt-Tiny</b><small>Stage 3 → 384 pooled values</small></div>
+      <div class="pipe-node pipe-fit"><span class="pipe-overline">Learn from natural images</span>
+        <b>Fit PCA + TopK SAE</b><small>Choose using validation images</small></div>
+      <div class="pipe-node pipe-encode"><span class="pipe-overline">Apply frozen transforms</span>
+        <b>Raw · PCA · SAE</b><small>Encode each image the same way</small></div>
+      <div class="pipe-output"><span class="pipe-overline">Compare</span>
+        <strong>32</strong><b>paired source triplets</b><small>Distance · feature overlap</small></div>
+    </figure>
+  </div>
+  <footer class="slide-foot"><span>Natural photos fit PCA and SAE. Frozen transforms score Feather triplets.</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/docs/EXPERIMENTAL_SCOPE_AND_SCALE.md" target="_blank" rel="noopener">Study design</a></div></footer>
+  <template class="speaker-notes"><p>Fit path: use Imagenette training activations to fit PCA and train the TopK sparse autoencoder. Natural-image validation selects the SAE configuration and checkpoints.</p>
+    <p>Score path: use the identical frozen ConvNeXt-Tiny Stage 3 observer and representation transforms for all three images. Explore eight development triplets, then compare 32 primary triplets, with eight reserved.</p>
+    <p>The dashed arrow carries the fitted transform. The solid teal arrow carries image representations into paired evaluation.</p></template>
+</section>
+
+<section class="slide " id="pairing" data-title="48 sources, three images each" hidden>
+  <header class="slide-head"><p>Stimuli</p><h2>48 sources, three images each</h2></header>
+  <div class="content">
+    <div class="clean-grid"><div class="flow"><div class="box "><b>400 candidates</b><span class="sub">Feather image IDs</span></div><span class="arrow" aria-hidden="true">→</span><div class="box "><b>397 complete</b><span class="sub">All three image URLs accessible</span></div><span class="arrow" aria-hidden="true">→</span><div class="box blue"><b>48 triplets</b><span class="sub">144 downloaded images</span></div></div>
+    <div><div class="dotbar" aria-label="8 development, 32 primary, 8 reserve"><i class="dev"></i><i class="dev"></i><i class="dev"></i><i class="dev"></i><i class="dev"></i><i class="dev"></i><i class="dev"></i><i class="dev"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="reserve"></i><i class="reserve"></i><i class="reserve"></i><i class="reserve"></i><i class="reserve"></i><i class="reserve"></i><i class="reserve"></i><i class="reserve"></i></div>
+    <div class="splitlabels"><div class="label">8<span class="sub">Development</span></div>
+    <div class="label">32<span class="sub">Primary evaluation · 96 images</span></div>
+    <div class="label">8<span class="sub">Reserve</span></div></div></div></div>
+  </div>
+  <footer class="slide-foot"><span>Pair and split by source identity.</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/02_stimulus_collection_and_pairing.ipynb" target="_blank" rel="noopener">Stimulus manifest</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/08_paired_metamer_evaluation_visualization_update.ipynb" target="_blank" rel="noopener">Paired evaluation</a></div></footer>
+  <template class="speaker-notes"><p>Three candidate IDs lacked the standard metamer. The stimulus audit checked the 48 selected triplets and verified the image dimensions and completeness.</p>
+    <p>The exploratory feature analysis used development rows. The primary evaluation loaded 96 primary stimuli for confirmatory evaluation and did not index reserve activations. The 384 reconstructed stimulus-metric rows are 96 images scored by four fitted representations.</p></template>
+</section>
+
+<section class="slide " id="observer" data-title="Read out ConvNeXt-Tiny at Stage 3" hidden>
+  <header class="slide-head"><p>Observer network</p><h2>Read out ConvNeXt-Tiny at Stage 3</h2></header>
+  <div class="content">
+    {{OBSERVER_DEMO}}
+  </div>
+  <footer class="slide-foot"><span>ImageNet-1K weights · Resize 236 → crop 224 → normalize · Measured maps for Feather 0000</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/03_observer_and_activation_extraction.ipynb" target="_blank" rel="noopener">Observer method</a></div></footer>
+  <template class="speaker-notes"><p>Select the source or either metamer, then choose a Stage 3 channel. The maps are computed from the original stimuli using the pilot’s TorchVision weights and preprocessing. Channels were chosen by spatial variability on the source, with the same scale for each selected channel across conditions.</p>
+    <p>Stage 3 produces 384 maps of 14 × 14. Global average pooling takes the spatial mean of every channel. The display reflows the 384 means into a grid, while the spatial maps keep their original positions.</p>
+    <p>The same feature extractor serves the natural-photo fit path and both metamer conditions. Stage 4 sits downstream of the pilot’s readout.</p></template>
+</section>
+
+<section class="slide " id="pca" data-title="PCA keeps the leading directions" hidden>
+  <header class="slide-head"><p>Linear baseline</p><h2>PCA keeps the leading directions</h2></header>
+  <div class="content">
+    <div class="dual"><div class="chart pca-chart">{{PCA_VARIANCE_CHART}}</div><div class="pca-method"><figure class="chart"><figcaption class="label">Project onto orthogonal axes</figcaption><svg role="img" aria-label="Schematic: project a centered activation onto orthogonal axes. Each projection is its score on that component." viewBox="0 0 510 250" xmlns="http://www.w3.org/2000/svg"><title>Schematic: project a centered activation onto orthogonal axes. Each projection is its score on that component.</title><line x1="45" y1="215" x2="369" y2="215" stroke="#6254ad" stroke-width="2"/><line x1="110" y1="245" x2="110" y2="35" stroke="#6254ad" stroke-width="2"/><text x="375" y="221" font-size="17" fill="#6254ad" text-anchor="start" font-family="Avenir Next, Arial, Helvetica" font-weight="700">PC 1</text><text x="110" y="25" font-size="17" fill="#6254ad" text-anchor="middle" font-family="Avenir Next, Arial, Helvetica" font-weight="700">PC 2</text><line x1="110" y1="215" x2="300" y2="75" stroke="#4161b6" stroke-width="2.5"/><line x1="300" y1="76" x2="300" y2="215" stroke="#53627e" stroke-width="1.4" stroke-dasharray="5 4"/><line x1="110" y1="75" x2="300" y2="75" stroke="#53627e" stroke-width="1.4" stroke-dasharray="5 4"/><circle cx="300" cy="75" r="7" fill="#4161b6"/><circle cx="300" cy="215" r="4" fill="#6254ad"/><circle cx="110" cy="75" r="4" fill="#6254ad"/><text x="309" y="66" font-size="16" fill="#4161b6" text-anchor="start" font-family="Avenir Next, Arial, Helvetica" font-weight="700">Centered activation</text><text x="300" y="240" font-size="15" fill="#53627e" text-anchor="middle" font-family="Avenir Next, Arial, Helvetica" font-weight="400">score 1</text><text x="99" y="81" font-size="15" fill="#53627e" text-anchor="end" font-family="Avenir Next, Arial, Helvetica" font-weight="400">score 2</text></svg></figure><div class="pca-retained"><div><strong>16 PCs · {{PCA_16_VARIANCE}}</strong><span class="sub">Primary baseline</span></div><div><strong>64 PCs · {{PCA_64_VARIANCE}}</strong><span class="sub">Sensitivity analysis</span></div></div></div></div>
+  </div>
+  <footer class="slide-foot"><span>One natural-image basis · Mean-centered · No whitening</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/04_pca_analysis.ipynb" target="_blank" rel="noopener">PCA fit</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/04_pca_visualization_extension.ipynb" target="_blank" rel="noopener">PCA diagnostics</a></div></footer>
+  <template class="speaker-notes"><p>Fit the full 384-component PCA basis once on 9,469 natural-image training vectors. Project and reconstruct with the first 16 or 64 directions of the same basis.</p><p>Validation MSE was 0.00374890 for 16 PCs and 0.00208057 for 64 PCs. The 04B extension followed image-linked trajectories and spatial PCA diagnostics. Its development-only PCA-16 analysis found standard farther for 8/8 triplets (mean 3.5939 versus 1.8273).</p></template>
+</section>
+
+<section class="slide " id="topk" data-title="Keep the strongest feature responses" hidden>
+  <header class="slide-head"><p>Sparse decomposition</p><h2>Keep the strongest feature responses</h2></header>
+  <div class="content">
+    {{TOPK_DEMO}}
+  </div>
+  <footer class="slide-foot"><span>Pilot uses Overcomplete TopK · 4× dictionary · Unit-norm decoder atoms · MSE loss</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/06_overcomplete_topk_sae_training.ipynb" target="_blank" rel="noopener">Training and checkpoints</a> · <a href="https://arxiv.org/abs/2406.04093" target="_blank" rel="noopener">Gao et al. 2024</a></div></footer>
+  <template class="speaker-notes"><p>Move the slider to choose how many of the 24 illustrative scores survive. The gate always retains the K largest ReLU scores and sets the other entries to zero. The demo is independent of the trained dictionary.</p>
+    <p>In the pilot, center each pooled 384-D vector using the saved Imagenette training mean. The affine encoder plus ReLU yields 1,536 scores. TopK with K=64 produces a sparse code that still has width 1,536.</p>
+    <p>The decoder sums unit-norm directions and reconstructs the centered 384-D activation without a decoder bias. The selected run’s natural-image validation L0 was 64.</p></template>
+</section>
+
+<section class="slide " id="reconstruction-comparison" data-title="What can PCA and SAE rebuild?" hidden>
+  <header class="slide-head"><p>Reconstruction demo</p><h2>What can PCA and SAE rebuild?</h2></header>
+  <div class="content">
+    {{RECONSTRUCTION_DEMO}}
+  </div>
+  <footer class="slide-foot"><span>Local refit · 384 pooled observer channels per map · Same fit data and color scale</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/04_pca_visualization_extension.ipynb" target="_blank" rel="noopener">PCA heatmap method</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/06_overcomplete_topk_sae_training.ipynb" target="_blank" rel="noopener">TopK setup</a></div></footer>
+  <template class="speaker-notes"><p>These are real ConvNeXt-Tiny Stage 3 activations from two held-out Feather triplets, with channels reflowed into a 12 × 32 grid. The panels show centered activation, not reconstructed pixels.</p>
+    <p>PCA and the 1,536-latent TopK SAE were fitted for this demonstration on the same 1,800 Imagenette training images. The SAE checkpoint was selected on 420 separate validation images. These illustrative fits are independent of the pilot checkpoints.</p>
+    <p>Choose 16 or 64 PCA components and switch to absolute reconstruction error to see which observer channels each method misses. MSE averages the squared residual over all 384 channels. Colors are clipped to a common display range per view. The deck reports the recorded pilot reconstruction results separately.</p></template>
+</section>
+
+<section class="slide " id="training" data-title="Four TopK settings, two seeds" hidden>
+  <header class="slide-head"><p>Training and sensitivity</p><h2>Four TopK settings, two seeds</h2></header>
+  <div class="content">
+    {{TRAINING_CHART}}
+  </div>
+  <footer class="slide-foot"><span>Imagenette-320 · 9,469 train / 3,925 validation · Adam · batch 256 · learning rate 0.0005</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/06_overcomplete_topk_sae_training.ipynb" target="_blank" rel="noopener">Training and checkpoints</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/07_topk_feature_analysis.ipynb" target="_blank" rel="noopener">Feature analysis</a></div></footer>
+  <template class="speaker-notes"><p>The eight original runs combined four width/K settings with seeds 42 and 123. Grid bars are the checkpoint-audited configuration means under the 100-epoch budget. This is a sensitivity sweep within TopK, with raw and PCA as comparison methods.</p>
+    <p>The selected 4× K64 runs were replayed from initialization with a 200-epoch budget on a Tesla T4. The first 100 epochs matched the original logs. Early stopping selected epoch 125 for seed 123 and epoch 123 for seed 42. Validation was checked every epoch. The schedule reduced LR after four plateau epochs and early stopping used patience 12 with a 10⁻⁵ minimum improvement.</p></template>
+</section>
+
+<section class="slide " id="feature-1157" data-title="Inside latent 1157" hidden>
+  <header class="slide-head"><p>Feature atlas</p><h2>Inside latent 1157</h2></header>
+  <div class="content">
+    {{FEATURE_ATLAS}}
+  </div>
+  <footer class="slide-foot"><span>Exploratory development set · ConvNeXt-Tiny Stage 3 · 4× TopK SAE · Seed 123</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/07_topk_feature_analysis.ipynb" target="_blank" rel="noopener">Feature analysis</a> · <a href="https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html" target="_blank" rel="noopener">Feature-display inspiration</a></div></footer>
+  <template class="speaker-notes"><p>The eight source response values are the observed values in the feature analysis development gallery table. The right-hand gallery switches between matched image triplets. The static bars summarize all eight stimuli in each condition, including zero activations.</p>
+    <p>1157 was first in the development gallery’s train-ranked feature order. Its activation is nonzero in 4/8 sources, 5/8 standard and 5/8 adversarial metamers. The atlas illustrates image-level feature response, with no semantic label or spatial attribution.</p></template>
+</section>
+
+<section class="slide " id="evaluation" data-title="How do we compare a metamer with its source?" hidden>
+  <header class="slide-head"><p>Evaluation strategy</p><h2>How do we compare a metamer with its source?</h2></header>
+  <div class="content">
+    <div class="evaluation-lab" data-switcher>
+      <div class="eval-stimuli"><div class="probe-title">Same source, two comparisons</div>
+        <div class="triptych "><figure class="photo source"><img data-photo="0000-source" alt="Natural source image for Feather source 0000"><figcaption><i class="dot"></i>Natural source</figcaption></figure>
+    <figure class="photo standard"><img data-photo="0000-standard" alt="Standard metamer for Feather source 0000"><figcaption><i class="dot"></i>Standard</figcaption></figure>
+    <figure class="photo adversarial"><img data-photo="0000-adversarial" alt="Adversarial metamer for Feather source 0000"><figcaption><i class="dot"></i>Adversarial</figcaption></figure></div>
+    <div class="eval-context"><span>Frozen observer</span><span>→</span><span>Raw / PCA / SAE</span></div>
+      </div>
+      <div class="eval-workbench"><div class="segmented" role="group" aria-label="Choose a metric"><button type="button" data-panel-button="distance" aria-pressed="true">How far?</button><button type="button" data-panel-button="direction" aria-pressed="false">Same direction?</button><button type="button" data-panel-button="support" aria-pressed="false">Same features?</button><button type="button" data-panel-button="reconstruction" aria-pressed="false">Can we rebuild it?</button></div>
+    <div class="eval-metric" data-panel="distance"><h3>L2 distance</h3><div class="eval-art"><svg role="img" aria-label="Two schematic distances from the same source" viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg"><title>Two schematic distances from the same source</title><text x="26" y="25" font-size="16" fill="#17223d" text-anchor="start" font-family="Avenir Next, Arial, Helvetica" font-weight="700">Source</text><line x1="63" y1="54" x2="408" y2="54" stroke="#9a315e" stroke-width="4"/><line x1="63" y1="107" x2="281" y2="107" stroke="#087970" stroke-width="4"/><circle cx="63" cy="54" r="7" fill="#17223d"/><circle cx="63" cy="107" r="7" fill="#17223d"/><path d="M408,45 417,54 408,63 399,54Z" fill="#9a315e"/><circle cx="281" cy="107" r="8" fill="#087970"/><text x="416" y="60" font-size="15" fill="#9a315e" text-anchor="start" font-family="Avenir Next, Arial, Helvetica" font-weight="700">Std.</text><text x="294" y="113" font-size="15" fill="#087970" text-anchor="start" font-family="Avenir Next, Arial, Helvetica" font-weight="700">Adv.</text></svg></div><p>Length of the difference between two vectors.</p></div>
+    <div class="eval-metric" data-panel="direction" hidden><h3>Cosine similarity</h3><div class="eval-art"><svg role="img" aria-label="Cosine is based on the angle between the source vector and a metamer vector" viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg"><title>Cosine is based on the angle between the source vector and a metamer vector</title><line x1="66" y1="130" x2="357" y2="130" stroke="#17223d" stroke-width="3"/><line x1="66" y1="130" x2="260" y2="36" stroke="#4161b6" stroke-width="3"/><circle cx="66" cy="130" r="6" fill="#17223d"/><circle cx="357" cy="130" r="6" fill="#17223d"/><circle cx="260" cy="36" r="6" fill="#4161b6"/><path d="M152 130 Q152 110 143 93" stroke="#5549dc" stroke-width="2.5" fill="none"/><text x="276" y="41" font-size="16" fill="#4161b6" text-anchor="start" font-family="Avenir Next, Arial, Helvetica" font-weight="700">Metamer vector</text><text x="363" y="135" font-size="16" fill="#17223d" text-anchor="start" font-family="Avenir Next, Arial, Helvetica" font-weight="700">Source vector</text><text x="160" y="110" font-size="18" fill="#4161b6" text-anchor="start" font-family="Avenir Next, Arial, Helvetica" font-weight="400">θ</text></svg></div><p>Compare angle, regardless of vector length.</p></div>
+    <div class="eval-metric" data-panel="support" hidden><h3>Active-feature overlap</h3><div class="eval-art"><div class="eval-support"><span>Source</span><div><i class="live"></i><i class="live"></i><i></i><i class="live"></i><i></i><i></i><i></i><i class="live"></i><i></i><i></i></div><span>Metamer</span><div><i class="live"></i><i class="live"></i><i></i><i></i><i></i><i class="live"></i><i></i><i class="live"></i><i></i><i></i></div><strong>3 / 5 shared</strong></div></div><p>Jaccard = shared active latents ÷ active latents in either image.</p></div>
+    <div class="eval-metric" data-panel="reconstruction" hidden><h3>Reconstruction error</h3><div class="eval-art"><div class="eval-rebuild"><span>Observer vector</span><b>→</b><span>Encode + decode</span><b>→</b><span>Rebuilt vector</span></div></div><p>Compare each image’s reconstruction error with the source’s error.</p></div></div>
+    </div>
+  </div>
+  <footer class="slide-foot"><span>Same paired images · Different questions · Illustrative metric diagrams</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/08_paired_metamer_evaluation_visualization_update.ipynb" target="_blank" rel="noopener">Metric definitions</a></div></footer>
+  <template class="speaker-notes"><p>Choose a question to reveal the metric. L2 measures how much a code changes. Relative L2 divides by the source vector norm. Cosine measures directional agreement. Support Jaccard compares the sets of active SAE latents.</p>
+    <p>For reconstruction error, subtract the source reconstruction MSE from the metamer reconstruction MSE. That quantity is descriptive. Raw spatial maps are analyzed separately from the pooled representations.</p>
+    <p>The unit for inference is a source triplet. The primary analysis used 10,000 paired bootstrap draws, paired Wilcoxon tests and Holm adjustment across 17 prespecified contrasts.</p></template>
+</section>
+
+<section class="slide " id="distances" data-title="Standard metamers changed the code more" hidden>
+  <header class="slide-head"><p>Primary result</p><h2>Standard metamers changed the code more</h2></header>
+  <div class="content">
+    {{DISTANCE_COMPARISON}}
+  </div>
+  <footer class="slide-foot"><span>L2 distance from the source · Compare conditions within each representation.</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/08_paired_metamer_evaluation_visualization_update.ipynb" target="_blank" rel="noopener">Pilot evidence</a> · {{CHART_DATA_DOWNLOAD}}</div></footer>
+  <template class="speaker-notes"><p>Here, “changed the code more” means a larger Euclidean distance from the source activation or feature code. The left panel recomputes the raw ConvNeXt-Tiny Stage 3 pooled distances for primary triplet 0116 from the public images and the pilot preprocessing.</p>
+    <p>The right panel shows stored primary means. Every standard metamer was farther from its source in all five representations. Click to reveal the paired mean differences and 95% bootstrap intervals.</p>
+    <p>The same 32 source identities appear across representations. All 17 predeclared contrasts survived Holm correction. Adjusted p values ranged from 7.916 × 10⁻⁹ to 1.731 × 10⁻⁶.</p></template>
+</section>
+
+<section class="slide " id="support" data-title="Adversarial metamers shared more source features" hidden>
+  <header class="slide-head"><p>Primary result · 32 source triplets</p><h2>Adversarial metamers shared more source features</h2></header>
+  <div class="content">
+    <div class="support"><div><h3>Source-feature overlap</h3><div class="big">{{FIRST_SUPPORT_GAIN}}</div><span class="sub">Mean paired Jaccard difference<br>Seed 123</span></div><figure class="chart">{{SUPPORT_CHART}}<div class="legend"><span class="standard"><i></i>Standard</span><span class="adversarial"><i></i>Adversarial</span></div></figure></div>
+  </div>
+  <footer class="slide-foot"><span>Each seed uses its own dictionary. Mean matched decoder cosine across seeds was 0.277.</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/07_topk_feature_analysis.ipynb" target="_blank" rel="noopener">Feature analysis</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/08_paired_metamer_evaluation_visualization_update.ipynb" target="_blank" rel="noopener">Paired evaluation</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/09_integrated_model_level_results.ipynb" target="_blank" rel="noopener">Integrated results</a></div></footer>
+  <template class="speaker-notes"><p>Jaccard is the number of active features shared by source and metamer, divided by the number in their union. It evaluates support within a fixed dictionary. Both seeds have nearly identical aggregate means.</p>
+    <p>On natural validation, 1,239 of 1,536 seed-123 features were used. After Hungarian matching, the mean decoder cosine between the two seed dictionaries was 0.277 (median 0.213). Agreement in group-level trends is stronger than one-to-one feature correspondence.</p></template>
+</section>
+
+<section class="slide " id="diagnostics" data-title="Alignment improved across several views" hidden>
+  <header class="slide-head"><p>Primary diagnostics · 32 source triplets</p><h2>Alignment improved across several views</h2></header>
+  <div class="content">
+    <div class="dual diagnostics"><div class="spatial"><h3>Raw spatial maps · mean relative L2</h3><div class="diagram-activation" aria-label="Schematic activation maps"><div class="grid-map" aria-hidden="true"><i style="--v:0.17"></i><i style="--v:0.23"></i><i style="--v:0.16"></i><i style="--v:0.35"></i><i style="--v:0.15"></i><i style="--v:0.36"></i><i style="--v:0.13"></i><i style="--v:0.27"></i><i style="--v:0.12"></i><i style="--v:0.15"></i><i style="--v:0.16"></i><i style="--v:0.25"></i><i style="--v:0.19"></i><i style="--v:0.41"></i><i style="--v:0.25"></i><i style="--v:0.48"></i><i style="--v:0.26"></i><i style="--v:0.39"></i><i style="--v:0.22"></i><i style="--v:0.21"></i><i style="--v:0.20"></i><i style="--v:0.07"></i><i style="--v:0.19"></i><i style="--v:0.44"></i><i style="--v:0.32"></i><i style="--v:0.60"></i><i style="--v:0.42"></i><i style="--v:0.57"></i><i style="--v:0.39"></i><i style="--v:0.35"></i><i style="--v:0.29"></i><i style="--v:0.13"></i><i style="--v:0.25"></i><i style="--v:0.41"></i><i style="--v:0.32"></i><i style="--v:0.65"></i><i style="--v:0.54"></i><i style="--v:0.74"></i><i style="--v:0.60"></i><i style="--v:0.55"></i><i style="--v:0.46"></i><i style="--v:0.25"></i><i style="--v:0.32"></i><i style="--v:0.06"></i><i style="--v:0.25"></i><i style="--v:0.60"></i><i style="--v:0.54"></i><i style="--v:0.81"></i><i style="--v:0.75"></i><i style="--v:0.75"></i><i style="--v:0.67"></i><i style="--v:0.43"></i><i style="--v:0.45"></i><i style="--v:0.14"></i><i style="--v:0.29"></i><i style="--v:0.48"></i><i style="--v:0.43"></i><i style="--v:0.74"></i><i style="--v:0.75"></i><i style="--v:0.83"></i><i style="--v:0.82"></i><i style="--v:0.60"></i><i style="--v:0.62"></i><i style="--v:0.27"></i><i style="--v:0.37"></i><i style="--v:0.09"></i><i style="--v:0.27"></i><i style="--v:0.56"></i><i style="--v:0.60"></i><i style="--v:0.74"></i><i style="--v:0.83"></i><i style="--v:0.67"></i><i style="--v:0.73"></i><i style="--v:0.39"></i><i style="--v:0.47"></i><i style="--v:0.16"></i><i style="--v:0.25"></i><i style="--v:0.38"></i><i style="--v:0.40"></i><i style="--v:0.54"></i><i style="--v:0.68"></i><i style="--v:0.60"></i><i style="--v:0.73"></i><i style="--v:0.44"></i><i style="--v:0.54"></i><i style="--v:0.22"></i><i style="--v:0.30"></i><i style="--v:0.13"></i><i style="--v:0.23"></i><i style="--v:0.34"></i><i style="--v:0.47"></i><i style="--v:0.42"></i><i style="--v:0.62"></i><i style="--v:0.39"></i><i style="--v:0.54"></i><i style="--v:0.25"></i><i style="--v:0.33"></i><i style="--v:0.16"></i><i style="--v:0.15"></i><i style="--v:0.20"></i><i style="--v:0.31"></i><i style="--v:0.24"></i><i style="--v:0.46"></i><i style="--v:0.27"></i><i style="--v:0.47"></i><i style="--v:0.22"></i><i style="--v:0.33"></i><i style="--v:0.17"></i><i style="--v:0.16"></i><i style="--v:0.18"></i><i style="--v:0.21"></i><i style="--v:0.12"></i><i style="--v:0.33"></i><i style="--v:0.14"></i><i style="--v:0.37"></i><i style="--v:0.16"></i><i style="--v:0.29"></i><i style="--v:0.16"></i><i style="--v:0.16"></i><i style="--v:0.18"></i><i style="--v:0.05"></i></div>
+    <div class="grid-map" aria-hidden="true"><i style="--v:0.24"></i><i style="--v:0.17"></i><i style="--v:0.26"></i><i style="--v:0.35"></i><i style="--v:0.29"></i><i style="--v:0.47"></i><i style="--v:0.25"></i><i style="--v:0.43"></i><i style="--v:0.16"></i><i style="--v:0.28"></i><i style="--v:0.12"></i><i style="--v:0.16"></i><i style="--v:0.26"></i><i style="--v:0.38"></i><i style="--v:0.36"></i><i style="--v:0.59"></i><i style="--v:0.41"></i><i style="--v:0.60"></i><i style="--v:0.33"></i><i style="--v:0.42"></i><i style="--v:0.22"></i><i style="--v:0.20"></i><i style="--v:0.23"></i><i style="--v:0.35"></i><i style="--v:0.36"></i><i style="--v:0.64"></i><i style="--v:0.53"></i><i style="--v:0.78"></i><i style="--v:0.54"></i><i style="--v:0.62"></i><i style="--v:0.39"></i><i style="--v:0.32"></i><i style="--v:0.26"></i><i style="--v:0.29"></i><i style="--v:0.29"></i><i style="--v:0.59"></i><i style="--v:0.53"></i><i style="--v:0.85"></i><i style="--v:0.69"></i><i style="--v:0.82"></i><i style="--v:0.60"></i><i style="--v:0.50"></i><i style="--v:0.39"></i><i style="--v:0.19"></i><i style="--v:0.19"></i><i style="--v:0.47"></i><i style="--v:0.41"></i><i style="--v:0.78"></i><i style="--v:0.69"></i><i style="--v:0.90"></i><i style="--v:0.75"></i><i style="--v:0.67"></i><i style="--v:0.56"></i><i style="--v:0.31"></i><i style="--v:0.35"></i><i style="--v:0.35"></i><i style="--v:0.25"></i><i style="--v:0.60"></i><i style="--v:0.54"></i><i style="--v:0.81"></i><i style="--v:0.75"></i><i style="--v:0.75"></i><i style="--v:0.67"></i><i style="--v:0.43"></i><i style="--v:0.45"></i><i style="--v:0.14"></i><i style="--v:0.12"></i><i style="--v:0.42"></i><i style="--v:0.34"></i><i style="--v:0.61"></i><i style="--v:0.60"></i><i style="--v:0.67"></i><i style="--v:0.68"></i><i style="--v:0.48"></i><i style="--v:0.52"></i><i style="--v:0.21"></i><i style="--v:0.34"></i><i style="--v:0.30"></i><i style="--v:0.17"></i><i style="--v:0.41"></i><i style="--v:0.40"></i><i style="--v:0.49"></i><i style="--v:0.56"></i><i style="--v:0.42"></i><i style="--v:0.53"></i><i style="--v:0.24"></i><i style="--v:0.37"></i><i style="--v:0.10"></i><i style="--v:0.07"></i><i style="--v:0.27"></i><i style="--v:0.23"></i><i style="--v:0.31"></i><i style="--v:0.40"></i><i style="--v:0.30"></i><i style="--v:0.46"></i><i style="--v:0.21"></i><i style="--v:0.37"></i><i style="--v:0.11"></i><i style="--v:0.24"></i><i style="--v:0.21"></i><i style="--v:0.14"></i><i style="--v:0.19"></i><i style="--v:0.27"></i><i style="--v:0.18"></i><i style="--v:0.36"></i><i style="--v:0.14"></i><i style="--v:0.34"></i><i style="--v:0.10"></i><i style="--v:0.23"></i><i style="--v:0.10"></i><i style="--v:0.10"></i><i style="--v:0.13"></i><i style="--v:0.20"></i><i style="--v:0.09"></i><i style="--v:0.28"></i><i style="--v:0.08"></i><i style="--v:0.29"></i><i style="--v:0.08"></i><i style="--v:0.22"></i><i style="--v:0.10"></i><i style="--v:0.12"></i></div>
+    <div class="grid-map" aria-hidden="true"><i style="--v:0.26"></i><i style="--v:0.10"></i><i style="--v:0.33"></i><i style="--v:0.30"></i><i style="--v:0.43"></i><i style="--v:0.53"></i><i style="--v:0.45"></i><i style="--v:0.59"></i><i style="--v:0.32"></i><i style="--v:0.45"></i><i style="--v:0.16"></i><i style="--v:0.07"></i><i style="--v:0.30"></i><i style="--v:0.28"></i><i style="--v:0.43"></i><i style="--v:0.58"></i><i style="--v:0.57"></i><i style="--v:0.76"></i><i style="--v:0.53"></i><i style="--v:0.66"></i><i style="--v:0.33"></i><i style="--v:0.39"></i><i style="--v:0.25"></i><i style="--v:0.21"></i><i style="--v:0.36"></i><i style="--v:0.53"></i><i style="--v:0.57"></i><i style="--v:0.84"></i><i style="--v:0.68"></i><i style="--v:0.85"></i><i style="--v:0.54"></i><i style="--v:0.57"></i><i style="--v:0.32"></i><i style="--v:0.15"></i><i style="--v:0.26"></i><i style="--v:0.41"></i><i style="--v:0.45"></i><i style="--v:0.77"></i><i style="--v:0.68"></i><i style="--v:0.94"></i><i style="--v:0.69"></i><i style="--v:0.74"></i><i style="--v:0.48"></i><i style="--v:0.38"></i><i style="--v:0.18"></i><i style="--v:0.29"></i><i style="--v:0.29"></i><i style="--v:0.59"></i><i style="--v:0.53"></i><i style="--v:0.85"></i><i style="--v:0.69"></i><i style="--v:0.82"></i><i style="--v:0.60"></i><i style="--v:0.50"></i><i style="--v:0.39"></i><i style="--v:0.21"></i><i style="--v:0.15"></i><i style="--v:0.41"></i><i style="--v:0.32"></i><i style="--v:0.65"></i><i style="--v:0.54"></i><i style="--v:0.74"></i><i style="--v:0.60"></i><i style="--v:0.55"></i><i style="--v:0.46"></i><i style="--v:0.25"></i><i style="--v:0.08"></i><i style="--v:0.29"></i><i style="--v:0.15"></i><i style="--v:0.45"></i><i style="--v:0.34"></i><i style="--v:0.56"></i><i style="--v:0.48"></i><i style="--v:0.50"></i><i style="--v:0.47"></i><i style="--v:0.27"></i><i style="--v:0.35"></i><i style="--v:0.24"></i><i style="--v:0.06"></i><i style="--v:0.31"></i><i style="--v:0.17"></i><i style="--v:0.38"></i><i style="--v:0.32"></i><i style="--v:0.37"></i><i style="--v:0.40"></i><i style="--v:0.25"></i><i style="--v:0.36"></i><i style="--v:0.10"></i><i style="--v:0.02"></i><i style="--v:0.25"></i><i style="--v:0.07"></i><i style="--v:0.26"></i><i style="--v:0.19"></i><i style="--v:0.25"></i><i style="--v:0.30"></i><i style="--v:0.18"></i><i style="--v:0.32"></i><i style="--v:0.09"></i><i style="--v:0.27"></i><i style="--v:0.22"></i><i style="--v:0.03"></i><i style="--v:0.20"></i><i style="--v:0.12"></i><i style="--v:0.16"></i><i style="--v:0.22"></i><i style="--v:0.11"></i><i style="--v:0.28"></i><i style="--v:0.06"></i><i style="--v:0.26"></i><i style="--v:0.04"></i><i style="--v:0.02"></i><i style="--v:0.18"></i><i style="--v:0.09"></i><i style="--v:0.12"></i><i style="--v:0.18"></i><i style="--v:0.07"></i><i style="--v:0.24"></i><i style="--v:0.03"></i><i style="--v:0.24"></i><i style="--v:0.04"></i><i style="--v:0.19"></i></div></div>
+    <div class="diagram-note">Schematic maps</div>{{SPATIAL_DISTANCE_BARS}}</div><figure class="chart"><h3>Cosine gain · paired distribution</h3>{{COSINE_CHART}}</figure></div>
+  </div>
+  <footer class="slide-foot"><span>Spatial diagnostics use unpooled ConvNeXt-Tiny activations.</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/08_paired_metamer_evaluation_visualization_update.ipynb" target="_blank" rel="noopener">Paired evaluation</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/09_integrated_model_level_results.ipynb" target="_blank" rel="noopener">Integrated results</a></div></footer>
+  <template class="speaker-notes"><p>Mean raw spatial L2 was 109.976 for standard versus 75.353 adversarial. The mean spatial cosine was 0.979047 versus 0.989251. The schematic maps depict array structure and are not observed heatmaps.</p>
+    <p>The cosine plot uses the saved 10th and 90th quantiles plus mean and median, so skew is visible without inventing individual data. Raw pooled cosine differences are tiny on the shared cosine scale.</p></template>
+</section>
+
+<section class="slide " id="reconstruction" data-title="Reconstruction changes were small" hidden>
+  <header class="slide-head"><p>Pilot reconstruction · 32 source triplets</p><h2>Reconstruction changes were small</h2></header>
+  <div class="content">
+    <figure class="chart">{{RECONSTRUCTION_CHART}}</figure>
+  </div>
+  <footer class="slide-foot"><span>Descriptive mean and 95% bootstrap interval · Read within each method.</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/08_paired_metamer_evaluation_visualization_update.ipynb" target="_blank" rel="noopener">Paired evaluation</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/09_integrated_model_level_results.ipynb" target="_blank" rel="noopener">Integrated results</a></div></footer>
+  <template class="speaker-notes"><p>The paired evaluation reconstructs in the original observer space for PCA and its centered observer space for SAE. Reconstruction delta is metamer MSE minus the paired source MSE. Several intervals cross zero and condition contrasts are small.</p>
+    <p>The 17-test Holm family covers displacement, cosine and support, with reconstruction handled descriptively.</p></template>
+</section>
+
+<section class="slide " id="limitations" data-title="How far does the pilot reach?" hidden>
+  <header class="slide-head"><p>Limitations</p><h2>How far does the pilot reach?</h2></header>
+  <div class="content">
+    <div class="limits"><div class="finding"><p class="tag slate">Within the pilot</p><h3>Consistent model-level separation</h3><ul><li>L2 displacement agrees across five spaces</li><li>Active-support gains agree across two SAE seeds</li></ul></div>
+    <div><p class="tag">Scope of the pilot</p><h3>A narrow test of generality</h3><ul><li>32 primary triplets · one generation stage</li><li>One generator family · one observer stage</li><li>One SAE variant · pooled features</li><li>Human and brain validation pending</li></ul></div></div>
+  </div>
+  <footer class="slide-foot"><span>Feature identity, causal relevance and perceptual prediction remain open.</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/09_integrated_model_level_results.ipynb" target="_blank" rel="noopener">Integrated results</a></div></footer>
+  <template class="speaker-notes"><p>The pilot uses selected accessible stimuli and an Imagenette fitting distribution. The SAE codes are image-level pooled. Different dictionaries could yield similar aggregate statistics while learning different axes.</p>
+    <p>The pilot cannot rank perceptual prediction across PCA and SAE without linked human scores and matched controls. Results suggest what to test with a broader model and stimulus matrix.</p></template>
+</section>
+
+<section class="slide " id="scale" data-title="Scale across models, conditions and layers" hidden>
+  <header class="slide-head"><p>Future work</p><h2>Scale across models, conditions and layers</h2></header>
+  <div class="content">
+    <div><table class="scope-table">
+    <thead><tr><th>Family</th><th>Standard / matched</th><th>Adversarial</th><th>Other condition</th></tr></thead>
+    <tbody><tr><th>ResNet-50</th><td class="done">Pilot complete</td><td class="done">Pilot complete · ℓ₂ ε=3</td><td class="future-data">Audit controls</td></tr>
+    <tr><th>AlexNet</th><td class="future-data">Audit assets</td><td class="future-data">Audit assets · ℓ₂ ε=3</td><td class="future-data">Random perturbations</td></tr>
+    <tr><th>IPCL / AlexNet-GN</th><td class="future-data">Matched supervised</td><td class="future-data">Verify feasibility</td><td class="future-data">Self-supervised IPCL</td></tr></tbody></table>
+    <div class="next-strip"><b>Layer sweep</b> <span>→</span> <span>More triplets</span> <span>→</span> <span>Shared observer + generator-native comparisons</span></div></div>
+  </div>
+  <footer class="slide-foot"><span>Expanded matrix and controls are planned.</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/docs/EXPERIMENTAL_SCOPE_AND_SCALE.md" target="_blank" rel="noopener">Repository study scope</a></div></footer>
+  <template class="speaker-notes"><p>Use one natural-trained dictionary per distinct observer and layer for the common-observer track. The generator-native track fits its own dictionary per model checkpoint and stage.</p>
+    <p>Verify exact conditions, named layers, stimulus availability and matched controls before running. Adversarial IPCL requires an official checkpoint and metamers or a separately declared new experiment.</p></template>
+</section>
+
+<section class="slide " id="human-recognition" data-title="Do feature scores track human recognition?" hidden>
+  <header class="slide-head"><p>Future work</p><h2>Do feature scores track human recognition?</h2></header>
+  <div class="content">
+    <div class="clean-grid"><div class="flow"><div class="box blue"><b>Model features</b><span class="sub">Raw / PCA / SAE</span></div><span class="arrow" aria-hidden="true">→</span><div class="box "><b>Match conditions</b><span class="sub">Model × training × layer</span></div><span class="arrow" aria-hidden="true">→</span><div class="box terra"><b>Human accuracy</b><span class="sub">Published 16-way task</span></div></div>
+    <div class="next-strip"><b>Controls</b><span>Layer depth · smoothness · pixel / SSIM / LPIPS · classifier baselines</span></div></div>
+  </div>
+  <footer class="slide-foot"><span>Use condition-level behavior and estimate its reliability where supported.</span><div><a href="https://doi.org/10.1038/s41593-023-01442-0" target="_blank" rel="noopener">Feather et al. 2023</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/docs/EXPERIMENTAL_SCOPE_AND_SCALE.md" target="_blank" rel="noopener">Study scope</a></div></footer>
+  <template class="speaker-notes"><p>Link Feather’s published human data to verified generator and layer conditions. Aggregate feature measurements at the same level supported by the behavior files. Use depth and smoothness covariates, standard perceptual baselines and a separate recognition-model baseline.</p>
+    <p>Estimate split-half reliability or a noise ceiling where the response data support it. Human recognition was not analyzed in the pilot.</p></template>
+</section>
+
+<section class="slide " id="brain-regions" data-title="Do model layers and brain regions agree?" hidden>
+  <header class="slide-head"><p>Part 2 · Future work</p><h2>Do model layers and brain regions agree?</h2></header>
+  <div class="content">
+    <div class="rsa"><div><figure class="photo source"><img data-photo="0000-source" alt="Natural source image for Feather source 0000"><figcaption><i class="dot"></i>Shared image set</figcaption></figure></div>
+    <div class="rsa-pipeline"><div class="rsa-row"><div class="box blue"><b>Model layers</b><span class="sub">Raw / PCA / SAE features</span></div><span class="arrow" aria-hidden="true">→</span><div class="rdm" aria-hidden="true"><i style="--v:0.00"></i><i style="--v:0.90"></i><i style="--v:0.41"></i><i style="--v:0.81"></i><i style="--v:0.74"></i><i style="--v:0.50"></i><i style="--v:0.90"></i><i style="--v:0.00"></i><i style="--v:0.90"></i><i style="--v:0.14"></i><i style="--v:0.90"></i><i style="--v:0.36"></i><i style="--v:0.41"></i><i style="--v:0.90"></i><i style="--v:0.00"></i><i style="--v:0.74"></i><i style="--v:0.50"></i><i style="--v:0.90"></i><i style="--v:0.81"></i><i style="--v:0.14"></i><i style="--v:0.74"></i><i style="--v:0.00"></i><i style="--v:0.36"></i><i style="--v:0.84"></i><i style="--v:0.74"></i><i style="--v:0.90"></i><i style="--v:0.50"></i><i style="--v:0.36"></i><i style="--v:0.00"></i><i style="--v:0.14"></i><i style="--v:0.50"></i><i style="--v:0.36"></i><i style="--v:0.90"></i><i style="--v:0.84"></i><i style="--v:0.14"></i><i style="--v:0.00"></i></div></div>
+    <div class="rsa-row"><div class="box terra"><b>Visual brain regions</b><span class="sub">fMRI response patterns</span></div><span class="arrow" aria-hidden="true">→</span><div class="rdm terr" aria-hidden="true"><i style="--v:0.00"></i><i style="--v:0.14"></i><i style="--v:0.90"></i><i style="--v:0.36"></i><i style="--v:0.84"></i><i style="--v:0.71"></i><i style="--v:0.14"></i><i style="--v:0.00"></i><i style="--v:0.50"></i><i style="--v:0.90"></i><i style="--v:0.14"></i><i style="--v:0.90"></i><i style="--v:0.90"></i><i style="--v:0.50"></i><i style="--v:0.00"></i><i style="--v:0.84"></i><i style="--v:0.71"></i><i style="--v:0.55"></i><i style="--v:0.36"></i><i style="--v:0.90"></i><i style="--v:0.84"></i><i style="--v:0.00"></i><i style="--v:0.90"></i><i style="--v:0.31"></i><i style="--v:0.84"></i><i style="--v:0.14"></i><i style="--v:0.71"></i><i style="--v:0.90"></i><i style="--v:0.00"></i><i style="--v:0.90"></i><i style="--v:0.71"></i><i style="--v:0.90"></i><i style="--v:0.55"></i><i style="--v:0.31"></i><i style="--v:0.90"></i><i style="--v:0.00"></i></div></div></div>
+    <div class="box dashed"><b>Compare geometry</b><span class="sub">Similarity of dissimilarity matrices</span></div></div>
+  </div>
+  <footer class="slide-foot"><span>Proposed representational similarity analysis · Schematic matrices</span><div><a href="https://doi.org/10.3389/neuro.06.004.2008" target="_blank" rel="noopener">Kriegeskorte et al. 2008</a></div></footer>
+  <template class="speaker-notes"><p>Present the same stimulus set to the model and to humans in an fMRI experiment, or use a compatible shared dataset. Compute stimulus-by-stimulus dissimilarity matrices for each model layer and each visual region. Compare the geometry with cross-validation and reliability controls.</p>
+    <p>This is research question 2 from the proposal. The matrices are schematic and make no claim about actual neural correspondence.</p></template>
+</section>
+
+<section class="slide closing" id="takeaway" data-title="The adversarial metamers stayed closer" hidden>
+  <header class="slide-head"><p>Takeaway</p><h2>The adversarial metamers stayed closer</h2></header>
+  <div class="content">
+    <div class="takeaway-copy"><p class="eyebrow">{{TITLE_TEXT}}</p><p class="lead">The distance result held across all five representations. Both SAE seeds also showed more shared active features with the source.</p></div>
+    <div><div class="triptych "><figure class="photo source"><img data-photo="0116-source" alt="Natural source image for Feather source 0116"><figcaption><i class="dot"></i>Natural source</figcaption></figure>
+    <figure class="photo standard"><img data-photo="0116-standard" alt="Standard metamer for Feather source 0116"><figcaption><i class="dot"></i>Standard</figcaption></figure>
+    <figure class="photo adversarial"><img data-photo="0116-adversarial" alt="Adversarial metamer for Feather source 0116"><figcaption><i class="dot"></i>Adversarial</figcaption></figure></div></div>
+  </div>
+  <footer class="slide-foot"><span>Primary triplet 0116 · ResNet-50 layer 2</span><div><a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/08_paired_metamer_evaluation_visualization_update.ipynb" target="_blank" rel="noopener">Paired evaluation</a> · <a href="https://github.com/neyedhayo/metamer-sae/blob/fd17f03c4feda64c1d4a3cb55d5bdab7a3cd6c8f/notebooks/09_integrated_model_level_results.ipynb" target="_blank" rel="noopener">Integrated results</a></div></footer>
+  <template class="speaker-notes"><p>Close by distinguishing the two measurements. Raw/PCA/SAE distance measures global displacement. SAE support overlap measures how many active directions are shared relative to the union.</p>
+    <p>The pilot establishes a repeatable model-level contrast across representation choices and two SAE seeds. The next test is whether these measurements add predictive value for human behavior.</p></template>
+</section>
+
+<section class="slide thanks" id="thanks" data-title="Thank you · Questions?" hidden>
+  
+  <div class="content">
+    <div class="thanks-copy"><p class="eyebrow">{{TITLE_TEXT}}</p><h1>Thank you<span>.</span><br><em>Questions?</em></h1><p>Samuel Oyeneye</p></div>
+    <div class="thanks-pair" aria-label="Natural source image alongside its matched final-layer model metamer"><figure class="photo source"><img data-photo="0000-source" alt="Natural source image for Feather source 0000"></figure>
+    <figure class="photo standard"><img data-photo="0000-standard-final" alt="Standard metamer for Feather source 0000 at final"></figure></div>
+  </div>
+  <footer class="slide-foot"><span>Visual Perception · Project 08</span><div><a href="https://github.com/neyedhayo/metamer-sae" target="_blank" rel="noopener">Project repository</a></div></footer>
+  <template class="speaker-notes"><p>Invite questions about the match, the observer representations, and what the comparison can tell us about model invariance.</p></template>
+</section>

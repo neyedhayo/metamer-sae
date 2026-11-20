@@ -1,0 +1,9 @@
+representation,condition,mean_delta_mse_x1000,ci_low_x1000,ci_high_x1000
+PCA-16,standard,-0.295,-0.529,-0.08
+PCA-16,adversarial,-0.029,-0.213,0.139
+PCA-64,standard,-0.062,-0.235,0.108
+PCA-64,adversarial,-0.015,-0.143,0.099
+SAE 123,standard,0.153,0.024,0.281
+SAE 123,adversarial,0.136,0.042,0.223
+SAE 42,standard,0.144,0.008,0.278
+SAE 42,adversarial,0.075,-0.029,0.174

@@ -1,0 +1,8 @@
+metric,representation,n_triplets,standard_mean,adversarial_mean,paired_difference,difference_direction,ci_low,ci_high
+L2,Raw 384-D,32,3.51393,1.88862,1.625314,standard minus adversarial,1.225241,2.07964
+L2,PCA-16,32,3.3209,1.73932,1.581581,standard minus adversarial,1.168179,2.049341
+L2,PCA-64,32,3.37833,1.78385,1.594479,standard minus adversarial,1.18633,2.056672
+L2,SAE 123,32,2.65585,1.49767,1.158173,standard minus adversarial,0.899012,1.43695
+L2,SAE 42,32,2.69383,1.53391,1.159917,standard minus adversarial,0.901238,1.441196
+Support Jaccard,Seed 123,32,0.533393,0.6783,0.144907,adversarial minus standard,0.104221,0.194497
+Support Jaccard,Seed 42,32,0.536385,0.678237,0.141853,adversarial minus standard,0.108482,0.183915

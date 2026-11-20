@@ -1,0 +1,3 @@
+label,seed,best_epoch,validation_mse,active_validation_features
+Selected 4× · K64,123,125,0.0016301164756807836,1239
+Independent replicate,42,123,0.0016335710868310587,1248
