@@ -1,0 +1,77 @@
+experiment:
+  id: pilot_resnet50_convnext_stage3_fromscratch
+  description: Standard vs adversarial ResNet-50 layer2_fake_relu metamers, ConvNeXt-Tiny
+    stage-3 observer (from-scratch refit on Engaging; NOT the archived pilot artifacts)
+feather:
+  repository: https://github.com/jenellefeather/model_metamers_pytorch.git
+  commit: d9629b58ad43ce9a6bd74be951869cffbd8e8161
+  local_dir: data/external/model_metamers_pytorch
+  conditions:
+  - id: standard_resnet50
+    role: standard
+    experiment_key: experiment_1
+    model_key: resnet50
+    layer: layer2_fake_relu
+  - id: adversarial_resnet50
+    role: adversarial
+    experiment_key: experiment_3
+    model_key: resnet50_l2_3_robust
+    layer: layer2_fake_relu
+stimuli:
+  image_dir: data/images
+  manifest: data/manifests/stimulus_manifest.csv
+  split_manifest: data/manifests/stimulus_allocation.csv
+  split_policy: pilot_fixed
+natural_images:
+  dataset: imagenette2-320
+  root: data/external/imagenette2-320
+  train_samples: 9469
+  validation_samples: 3925
+observer:
+  architecture: convnext_tiny
+  weights: IMAGENET1K_V1
+  layer: stage3
+  frozen: true
+  input_resolution: 224
+  resize_size: 236
+  output_channels: 384
+  spatial_shape:
+  - 384
+  - 14
+  - 14
+  pooling: global_average_pool
+pca:
+  run_id: pca_20261125T163939Z
+  artifact: outputs/runs/pca_20261125T163939Z/basis/pca_basis.npz
+  fitted_components: 384
+  primary_components: 16
+  sensitivity_components:
+  - 64
+  whiten: false
+  channel_standardize: false
+sae:
+  framework: overcomplete
+  version: 0.3.0
+  variant: topk
+  input_dim: 384
+  dictionary_width: 1536
+  top_k: 64
+  training_mean: outputs/sae_preparation/training_activation_mean.npy
+  primary_seed: 123
+  replicate_seed: 42
+  primary_checkpoint: outputs/runs/topk_seed123_20261125T163950Z/model/best_model.pt
+  replicate_checkpoint: outputs/runs/topk_seed42_20261125T164010Z/model/best_model.pt
+paths:
+  outputs: outputs
+  natural_activations: outputs/activations/natural_images
+  feather_activations: outputs/activations/feather
+  feather_role_dirs:
+    source: source
+    standard: standard_resnet50
+    adversarial: adversarial_resnet50
+evaluation:
+  primary_split: primary_evaluation
+  development_split: development
+  reserve_policy: never_load_activation_rows
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20261119

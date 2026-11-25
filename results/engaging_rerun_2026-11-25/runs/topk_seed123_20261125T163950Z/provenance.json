@@ -1,0 +1,26 @@
+{
+  "run_id": "topk_seed123_20261125T163950Z",
+  "started_utc": "2026-11-25T16:39:50.434166+00:00",
+  "config_sha256": "fb86ea0e2f3013181d73309c848165fd860548959d1f2d46dcee563fdfa77d2c",
+  "metamer_sae_commit": "95e8aedca761bb45951eb5fb90bb3681f523c79c",
+  "feather_commit": "d9629b58ad43ce9a6bd74be951869cffbd8e8161",
+  "packages": {
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "torch": "2.11.0",
+    "torchvision": "0.26.0",
+    "overcomplete": "0.3.0",
+    "pillow": "13.0.0",
+    "pydantic": "2.14.4",
+    "matplotlib": "3.8.4"
+  },
+  "runtime": {
+    "python": "3.12.16",
+    "platform": "Linux-4.18.0-553.147.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "cuda_available": true,
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "cuda": "13.0"
+  }
+}

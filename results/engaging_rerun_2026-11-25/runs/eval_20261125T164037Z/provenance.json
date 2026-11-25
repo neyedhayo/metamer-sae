@@ -1,0 +1,32 @@
+{
+  "run_id": "eval_20261125T164037Z",
+  "started_utc": "2026-11-25T16:40:37.781664+00:00",
+  "config_sha256": "1f0c5e9397944cea0376f23a9836f9fb35586f683eabfaa2fa04aaaa8eb800d7",
+  "metamer_sae_commit": "95e8aedca761bb45951eb5fb90bb3681f523c79c",
+  "feather_commit": "d9629b58ad43ce9a6bd74be951869cffbd8e8161",
+  "packages": {
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "torch": "2.11.0",
+    "torchvision": "0.26.0",
+    "overcomplete": "0.3.0",
+    "pillow": "13.0.0",
+    "pydantic": "2.14.4",
+    "matplotlib": "3.8.4"
+  },
+  "runtime": {
+    "python": "3.12.16",
+    "platform": "Linux-4.18.0-553.147.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "cuda_available": true,
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "cuda": "13.0"
+  },
+  "split_sha256": "0765ecfb680704284c7c90ae7db3669a5ede2e4348f43b99bca9ef1206a5be98",
+  "pca_sha256": "424906a5646dafefb54b64353368c012d33c1e4451833c941308de7a63e5959a",
+  "sae_checkpoint_sha256": {
+    "seed123": "41d7d0767b5c1285483eccde7a4eb0eb87757cc78225b22d4a296d3e586aec89",
+    "seed42": "38c7b2669e1376c4ed182ffce63657ff6d893acb410bcfdfe490f898dbdf4bcd"
+  }
+}

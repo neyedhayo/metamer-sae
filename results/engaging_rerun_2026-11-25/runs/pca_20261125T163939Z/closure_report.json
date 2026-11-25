@@ -1,0 +1,17 @@
+{
+  "run_id": "pca_20261125T163939Z",
+  "status": "complete",
+  "closed_utc": "2026-11-25T16:39:46.679751+00:00",
+  "summary": {
+    "fit_samples": 9469
+  },
+  "artifact_sha256": {
+    "provenance.json": "19829479eb4cf33ad7e8e27f997738cc4f958b5861d416c1f9439370deb05d0f",
+    "component_retention.csv": "5a4ee574ce1b47ed58a31974e2482e3bd60427acbc6966e349d89e1f6ec7811c",
+    "config.resolved.json": "85d855f5d7363a3c06927888afa33714cdb07e3c8d5216a182c4f87002b4bd72",
+    "basis/pca_basis.npz": "424906a5646dafefb54b64353368c012d33c1e4451833c941308de7a63e5959a",
+    "basis/pca_meta.json": "50d337ef0ac1b1cd23cace5c4ba29f169d235001ce7e4c6fe27deda0bc517d34",
+    "figures/pca_retention.png": "1c5821de07d5220992733be03ef2cee9d13b41313990fb2aadcbaa558e9b9856",
+    "figures/pca_retention.pdf": "599c7eb5381f5ab1648d651f19c0e729659ba5c866413193c7363a1f1f899939"
+  }
+}

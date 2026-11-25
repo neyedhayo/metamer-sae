@@ -1,0 +1,9 @@
+{
+  "best_epoch": 78,
+  "best_val_mse": 0.0017562620022241223,
+  "epochs_completed": 78,
+  "seed": 123,
+  "width": 1536,
+  "top_k": 64,
+  "stopped_early": true
+}

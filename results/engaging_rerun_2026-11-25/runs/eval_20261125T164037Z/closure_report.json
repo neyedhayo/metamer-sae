@@ -1,0 +1,31 @@
+{
+  "run_id": "eval_20261125T164037Z",
+  "status": "complete",
+  "closed_utc": "2026-11-25T16:40:39.170314+00:00",
+  "summary": {
+    "n_primary": 32,
+    "n_contrasts": 17,
+    "l2_standard_gt_adversarial": {
+      "raw_384": 32,
+      "pca_16": 32,
+      "pca_64": 32,
+      "sae_seed123": 32,
+      "sae_seed42": 32
+    },
+    "max_holm_p": 3.7759510737614765e-06,
+    "note": "Model-representation findings only; no human behaviour was loaded."
+  },
+  "artifact_sha256": {
+    "config.resolved.json": "1c634def1dc0eb81cbd8bcd389d141f397a49f274f0674238b2fa0009b52be7c",
+    "provenance.json": "f144ab1ce36f1dd0b188a0968d0e3fe85883fbc3fef40a31c0e16febeed4ccc1",
+    "figures/primary_contrast_forest.png": "449f542d6ba3e6845bd6412d3486b6ae46a638f3c4eb4b7d5c9a1ad5a25703ef",
+    "figures/primary_contrast_forest.pdf": "e02031a8ee8956da2226fd18479042f9f05622474691de1d4802b8a35b89f560",
+    "figures/primary_l2_paired.png": "c1ccd500be754c2412ac70a639e8b37059385934a51a46a287b091a4bbc67761",
+    "figures/primary_l2_paired.pdf": "d61f832ed709d101176d26e730603b5ac0e2e70d6e093f3b2fed8714af18eb97",
+    "tables/primary_evaluation_stimulus_metrics.csv": "6057c4d690d92b87dfed955bdb9f0965bbb048a57eb22b97ac70d2619e9e7a13",
+    "tables/development_paired_metrics.csv": "4cdf6ee8a85347d809ebb3364ee29a007991187d98eb0002e27520815c1712e0",
+    "tables/primary_paired_contrasts_bootstrap.csv": "bfa1c42c2b875f98e79a85519c1b5455de846678346d3b5a9fc15b3c420a7e0d",
+    "tables/primary_evaluation_paired_metrics.csv": "7106cb518e3c4fe807972c9f74ba11d50301574a364bb8130ab60966f5f19c30",
+    "tables/development_stimulus_metrics.csv": "e31d4e9fc96a95a8a88d30c1d0777358a17223c95edad244d74b8c1a294503c8"
+  }
+}
