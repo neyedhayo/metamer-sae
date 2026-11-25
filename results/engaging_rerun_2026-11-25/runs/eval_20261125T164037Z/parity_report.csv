@@ -1,0 +1,21 @@
+check,got,reference,tolerance,pass
+PCA-16 natural validation MSE,0.0037489277694161592,0.0037489,2e-08,False
+PCA-64 natural validation MSE,0.0020805882612382207,0.00208057,2e-08,True
+SAE seed123 natural validation MSE,0.0017562619825771811,0.0016301164756807836,1e-07,False
+SAE seed42 natural validation MSE,0.0017574647024295223,0.00163357109,1e-07,False
+primary mean L2 raw_384/standard,3.514025852821197,3.51393,2e-05,False
+primary mean L2 raw_384/adversarial,1.8886540242696142,1.88862,2e-05,False
+primary mean L2 pca_16/standard,3.320999863929742,3.3209,2e-05,False
+primary mean L2 pca_16/adversarial,1.7393539230577373,1.73932,2e-05,False
+primary mean L2 pca_64/standard,3.378435789274796,3.37833,2e-05,False
+primary mean L2 pca_64/adversarial,1.783891666647174,1.78385,2e-05,False
+primary mean L2 sae_seed123/standard,2.7705999051548984,2.65585,2e-05,False
+primary mean L2 sae_seed123/adversarial,1.5751687795943905,1.49767,2e-05,False
+32/32 L2 direction raw_384,32.0,32.0,0.0,True
+32/32 L2 direction pca_16,32.0,32.0,0.0,True
+32/32 L2 direction pca_64,32.0,32.0,0.0,True
+32/32 L2 direction sae_seed123,32.0,32.0,0.0,True
+32/32 L2 direction sae_seed42,32.0,32.0,0.0,True
+number of paired contrasts,17.0,17.0,0.0,True
+max Holm-adjusted p < 0.001,1.0,1.0,0.0,True
+max Holm-adjusted p (≈1.731e-06),3.7759510737614765e-06,1.731e-06,2e-08,False

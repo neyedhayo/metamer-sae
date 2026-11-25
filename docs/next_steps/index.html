@@ -164,7 +164,7 @@
     <li>Ran the pilot end to end from a fresh clone: 144 Feather images, 13,394 Imagenette images, ConvNeXt extraction, new PCA, new TopK SAEs (seeds 123 and 42), paired evaluation with 10,000 bootstrap resamples. About five minutes on one H100. 41 tests pass, 1 skipped (needs the archived pilot artifacts).</li>
     <li>This is a refit, not strict parity. The archived Colab PCA and SAE checkpoints are not in the repo, so the parity table fails its tight tolerances for the SAE rows while every qualitative check passes.</li>
     <li>Three setup problems for Samuel: <code>overcomplete 0.3.0</code> needs <code>matplotlib &lt; 3.9</code>; importing Feather's metadata pulls in <code>h5py</code>, <code>dill</code>, <code>torchaudio</code> and <code>chcochleagram</code>, which are not in <code>pyproject.toml</code>; <code>matrix-inventory</code> raises <code>KeyError: nan</code> for unresolved registry conditions.</li>
-    <li>Everything is in <code>/orcd/data/jhm/001/dlatorre/metamer-sae</code> on Engaging, with a local copy in <code>metamer-sae/engaging_results/</code>. The follow-up numbers come from <code>outputs/followup/followup.py</code>.</li>
+    <li>Tables, figures, provenance and the follow-up numbers are in <code>results/engaging_rerun_2026-11-25/</code>. The run script is <code>scripts/engaging_full_pilot.sbatch</code> and the follow-up numbers come from <code>followup/followup.py</code> in that folder.</li>
     <li>One number to treat as soft: the natural-pair baseline for SAE feature overlap came out at 0.19 for one seed and 0.08 for the other, so it is left out above until checked.</li>
   </ul>
 </section>

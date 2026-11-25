@@ -1,0 +1,21 @@
+{
+  "run_id": "topk_seed42_20261125T164010Z",
+  "status": "complete",
+  "closed_utc": "2026-11-25T16:40:21.205642+00:00",
+  "summary": {
+    "best_epoch": 78,
+    "best_val_mse": 0.0017574646923445845,
+    "epochs_completed": 78,
+    "seed": 42,
+    "width": 1536,
+    "top_k": 64,
+    "stopped_early": true
+  },
+  "artifact_sha256": {
+    "config.resolved.json": "ceaba01c697ac37583bf76ddba9a5d630d32e66a668c3cd8055d7f59a3a8e40a",
+    "provenance.json": "47850851f3fb56d5e0562588dece5f07ffca34aefdbf264fe38a92e59bbd5c43",
+    "model/best_model.pt": "38c7b2669e1376c4ed182ffce63657ff6d893acb410bcfdfe490f898dbdf4bcd",
+    "model/result.json": "52fc681e683d3bc9937d89fa9db6b534052d565319c768d4376a6300f6ac10ff",
+    "model/history.csv": "134fc030ec5e7860f2a9e3ad774b2a6f7704f3d925c5e2d682abbdeb60d9454d"
+  }
+}

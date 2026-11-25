@@ -1,0 +1,26 @@
+{
+  "run_id": "inventory_ipcl_core_generator_native_20261125T164113Z",
+  "started_utc": "2026-11-25T16:41:13.465545+00:00",
+  "config_sha256": "2a460605b20055b73a162358df0510fb067dc5b918c88f98ccbbeb1d9179058f",
+  "metamer_sae_commit": "95e8aedca761bb45951eb5fb90bb3681f523c79c",
+  "feather_commit": "d9629b58ad43ce9a6bd74be951869cffbd8e8161",
+  "packages": {
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "torch": "2.11.0",
+    "torchvision": "0.26.0",
+    "overcomplete": "0.3.0",
+    "pillow": "13.0.0",
+    "pydantic": "2.14.4",
+    "matplotlib": "3.8.4"
+  },
+  "runtime": {
+    "python": "3.12.16",
+    "platform": "Linux-4.18.0-553.147.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "cuda_available": true,
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "cuda": "13.0"
+  }
+}

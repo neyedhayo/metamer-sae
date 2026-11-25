@@ -1,0 +1,222 @@
+{
+ "n_primary": 32,
+ "natural_scale_raw_l2": {
+  "source_to_standard_metamer": 3.514025852821197,
+  "source_to_adversarial_metamer": 1.8886540242696142,
+  "natural_nearest_neighbour_median": 1.4790702920781604,
+  "natural_same_class_pair_median": 4.328985187688026,
+  "natural_different_class_pair_median": 5.560883775315048,
+  "different_feather_sources_median": 4.069884019680087
+ },
+ "source_retrieval_top1_raw": {
+  "standard": 0.3125,
+  "adversarial": 0.71875
+ },
+ "displacement_raw": {
+  "standard": {
+   "energy_along_mean_direction": 0.7499195527326113,
+   "mean_pairwise_cosine_between_sources": 0.8492954713181662
+  },
+  "adversarial": {
+   "energy_along_mean_direction": 0.6579373966584596,
+   "mean_pairwise_cosine_between_sources": 0.6764780270906618
+  },
+  "cosine_mean_standard_vs_mean_adversarial": 0.9893824394875658,
+  "per_source_cosine_standard_vs_adversarial_mean": 0.8738439270107894
+ },
+ "sae": {
+  "sae_seed123": {
+   "latents_ever_active_primary": 620,
+   "features_lost_per_source_of_64": {
+    "std": 19.71875,
+    "adv": 12.875
+   },
+   "lost_in_standard_also_lost_in_adversarial_fraction": 0.6117274167987322,
+   "gained_in_standard_also_gained_in_adversarial_fraction": 0.4532488114104596,
+   "corr_mean_change_standard_vs_adversarial": 0.9897833373680219,
+   "share_of_mean_change_in_top10_latents": 0.20436262804116348,
+   "top_latents_by_standard_change": [
+    {
+     "latent": 722,
+     "mean_change_standard": 0.5201999107375741,
+     "mean_change_adversarial": 0.2562821223400533,
+     "n_sources_same_sign_standard": 28,
+     "active_in_n_sources": 22,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 27
+    },
+    {
+     "latent": 398,
+     "mean_change_standard": 0.4485854397062212,
+     "mean_change_adversarial": 0.22026721783913672,
+     "n_sources_same_sign_standard": 30,
+     "active_in_n_sources": 23,
+     "active_in_n_standard": 30,
+     "active_in_n_adversarial": 28
+    },
+    {
+     "latent": 992,
+     "mean_change_standard": 0.4402216263115406,
+     "mean_change_adversarial": 0.24918775912374258,
+     "n_sources_same_sign_standard": 28,
+     "active_in_n_sources": 21,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 28
+    },
+    {
+     "latent": 970,
+     "mean_change_standard": 0.43301795376464725,
+     "mean_change_adversarial": 0.1957577965222299,
+     "n_sources_same_sign_standard": 30,
+     "active_in_n_sources": 23,
+     "active_in_n_standard": 30,
+     "active_in_n_adversarial": 28
+    },
+    {
+     "latent": 746,
+     "mean_change_standard": 0.4317211261950433,
+     "mean_change_adversarial": 0.20739254029467702,
+     "n_sources_same_sign_standard": 29,
+     "active_in_n_sources": 22,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 27
+    },
+    {
+     "latent": 163,
+     "mean_change_standard": 0.41984359873458743,
+     "mean_change_adversarial": 0.20059578772634268,
+     "n_sources_same_sign_standard": 30,
+     "active_in_n_sources": 24,
+     "active_in_n_standard": 30,
+     "active_in_n_adversarial": 26
+    },
+    {
+     "latent": 1517,
+     "mean_change_standard": 0.4057671567425132,
+     "mean_change_adversarial": 0.20039547141641378,
+     "n_sources_same_sign_standard": 28,
+     "active_in_n_sources": 23,
+     "active_in_n_standard": 28,
+     "active_in_n_adversarial": 27
+    },
+    {
+     "latent": 648,
+     "mean_change_standard": 0.40278561133891344,
+     "mean_change_adversarial": 0.21151164267212152,
+     "n_sources_same_sign_standard": 29,
+     "active_in_n_sources": 23,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 27
+    }
+   ],
+   "natural_validation_pairs_support_jaccard_median": 0.18518518518518517,
+   "support_jaccard": {
+    "std": 0.5701235271649098,
+    "adv": 0.6936958249311356
+   }
+  },
+  "sae_seed42": {
+   "latents_ever_active_primary": 645,
+   "features_lost_per_source_of_64": {
+    "std": 18.96875,
+    "adv": 12.0
+   },
+   "lost_in_standard_also_lost_in_adversarial_fraction": 0.5683690280065898,
+   "gained_in_standard_also_gained_in_adversarial_fraction": 0.4382207578253707,
+   "corr_mean_change_standard_vs_adversarial": 0.9922287269690111,
+   "share_of_mean_change_in_top10_latents": 0.21222624832300918,
+   "top_latents_by_standard_change": [
+    {
+     "latent": 568,
+     "mean_change_standard": 0.5739759420976043,
+     "mean_change_adversarial": 0.2726448616012931,
+     "n_sources_same_sign_standard": 29,
+     "active_in_n_sources": 22,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 27
+    },
+    {
+     "latent": 1237,
+     "mean_change_standard": 0.5666351520922035,
+     "mean_change_adversarial": 0.26669805170968175,
+     "n_sources_same_sign_standard": 30,
+     "active_in_n_sources": 24,
+     "active_in_n_standard": 30,
+     "active_in_n_adversarial": 28
+    },
+    {
+     "latent": 1296,
+     "mean_change_standard": 0.5368495751172304,
+     "mean_change_adversarial": 0.2421060185879469,
+     "n_sources_same_sign_standard": 29,
+     "active_in_n_sources": 23,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 26
+    },
+    {
+     "latent": 190,
+     "mean_change_standard": 0.4251849399879575,
+     "mean_change_adversarial": 0.21931502502411604,
+     "n_sources_same_sign_standard": 30,
+     "active_in_n_sources": 23,
+     "active_in_n_standard": 30,
+     "active_in_n_adversarial": 28
+    },
+    {
+     "latent": 1159,
+     "mean_change_standard": 0.4055358050391078,
+     "mean_change_adversarial": 0.1885270643979311,
+     "n_sources_same_sign_standard": 28,
+     "active_in_n_sources": 22,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 26
+    },
+    {
+     "latent": 999,
+     "mean_change_standard": 0.4004649796988815,
+     "mean_change_adversarial": 0.2076677333097905,
+     "n_sources_same_sign_standard": 29,
+     "active_in_n_sources": 26,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 27
+    },
+    {
+     "latent": 576,
+     "mean_change_standard": 0.39662468526512384,
+     "mean_change_adversarial": 0.19280273374170065,
+     "n_sources_same_sign_standard": 30,
+     "active_in_n_sources": 21,
+     "active_in_n_standard": 30,
+     "active_in_n_adversarial": 28
+    },
+    {
+     "latent": 508,
+     "mean_change_standard": 0.3946750909090042,
+     "mean_change_adversarial": 0.19430822134017944,
+     "n_sources_same_sign_standard": 29,
+     "active_in_n_sources": 21,
+     "active_in_n_standard": 29,
+     "active_in_n_adversarial": 27
+    }
+   ],
+   "natural_validation_pairs_support_jaccard_median": 0.08018800740635237,
+   "support_jaccard": {
+    "std": 0.584316941443301,
+    "adv": 0.7093716595890172
+   }
+  }
+ },
+ "cross_seed_matching": {
+  "mean_matched_cosine": 0.2631025053270272,
+  "fraction_above_0.9": 0.0013020833333333333,
+  "fraction_above_0.5": 0.10416666666666667
+ },
+ "pixel_baseline": {
+  "pixel_rms_standard_mean": 0.1498698276978635,
+  "pixel_rms_adversarial_mean": 0.07016773492675744,
+  "n_sources_standard_pixel_gt_adversarial": 32,
+  "spearman_pixel_vs_observer_l2_standard": 0.09787390029325513,
+  "spearman_pixel_vs_observer_l2_adversarial": 0.2976539589442815,
+  "spearman_pixel_gap_vs_observer_gap": 0.4230205278592375
+ }
+}
